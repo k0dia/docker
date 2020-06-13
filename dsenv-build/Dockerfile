@@ -12,7 +12,7 @@ RUN wget https://repo.continuum.io/archive/Anaconda3-2019.10-Linux-x86_64.sh && 
     sh Anaconda3-2019.10-Linux-x86_64.sh -b -p/opt/Anaconda3 && \
     rm Anaconda3-2019.10-Linux-x86_64.sh
 # pass python path
-ENV /opt/Anaconda3/bin:&PATH
+ENV PATH /opt/Anaconda3/bin:&PATH
 # Upgrade pip
 RUN pip install -upgrade pip
 # Change workin dirctory to /
