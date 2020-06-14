@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  # service name
+  web:
+    # Where to build
+    build: .
+    # Port specification
+    ports:
+      - '3000:3000'
+    # Specify directory to mount
+    volumes:
+      - '.:/product-register'
+    # -it command
+    tty: true
+    stdin_open: true
