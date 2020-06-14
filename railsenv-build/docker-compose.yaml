@@ -1,5 +1,8 @@
 version: '3'
 
+volumes:
+  db-data:
+
 services:
   # service name
   web:
@@ -11,6 +14,22 @@ services:
     # Specify directory to mount
     volumes:
       - '.:/product-register'
+    environment:
+      - 'DATABASE_PASSWORD=postgres'
     # -it command
     tty: true
     stdin_open: true
+    # Execute after creating the specified container
+    depends_on:
+      - db
+    # Description of which container to communicate with
+    links:
+      - db
+
+  db:
+    image: postgres
+    volumes:
+      - 'db-data:/var/lib/postgresql/data'
+    environment:
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_PASSWORD=postgres'
